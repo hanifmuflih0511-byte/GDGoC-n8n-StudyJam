@@ -1,0 +1,95 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "Jancuk",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2daf915c-cdfb-4d3f-b483-89c62613f029",
+      "name": "Webhook",
+      "webhookId": "0eb2a581-b6d2-476b-8d59-429fdcfe94d0"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "37a38fdb-47a0-4f5c-9817-a05dfd3377e3",
+              "name": "",
+              "value": "=Perkenalkan {{ $json.body.Nama }} Saya adalah {{ $json.body.Prodi }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "1e185358-b7a0-471f-a43b-a978965dbb36",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        448,
+        0
+      ],
+      "id": "2e473b0f-6c00-41a3-8b10-ea6e9d846757",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "afa2b7a5-5406-42d7-9315-bbd176616e04",
+  "meta": {
+    "instanceId": "dd8ab73cdc14a5283c377f627a21d1ca42f76c458740af236c3ec17a5fba62ac"
+  },
+  "nodeGroups": [],
+  "id": "v9XHapSGaz05KVIv",
+  "tags": []
+}
